@@ -1,9 +1,9 @@
 class Sub < ApplicationRecord
-    validates :title, :moderator, presence: true
-    validates :title, uniqueness: true
+    validates :title, presence: true, uniqueness: true
+    # validates :moderator, allow_nil: true
 
     belongs_to :moderator,
-        foreign_key: :user_id,
+        foreign_key: :moderator_id,
         class_name: :User
 
     has_many :posts

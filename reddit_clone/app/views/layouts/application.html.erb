@@ -12,17 +12,21 @@
   <body>
 
     <% if logged_in? %>
-      <%= @user.username %>
-      <form action="<%= session_url %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="submit" value="Sign Out">
-      </form>
-      
-      <form action="<%= session_url %>" method="post">
+    <ul>
+      <li><%= current_user.username %></li>
+
+      <li><a href="<%=new_sub_url%>">Create a sub!</a></li>
+
+      <li><a href="<%=subs_url%>">All Subs</a></li>
+
+
+      <li><form action="<%= session_url %>" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Sign Out">
+        <input type="submit" value="Log Out">
       </form>
+      </li>
+    </ul>
     <% end %>
     <%= flash[:errors] %>
     <%= yield %>
